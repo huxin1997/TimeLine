@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.3.0'
+}
+
+group 'com.timeline'
+version '0.0.1'
+
+
+repositories {
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+    maven {
+        url 'https://dl.bintray.com/jetbrains/intellij-plugin-service'
+    }
+    mavenCentral()
+}
+
+publishPlugin {
+    channels = ['Stable']
+    token = System.getenv("ORG_GRADLE_PROJECT_intellijPublishToken")
+}
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '2020.3.4'
+    plugins = []
+}
+patchPluginXml {
+    sinceBuild = "203"
+    untilBuild = ""
+    changeNotes = """
+<h3>0.0.1</h3>
+<ul>
+<li>初始化</li>
+</ul>
+      """
+}
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.timeline.TimeLine</id>
+    <name>Plugin display name here</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.timeline.config.AppSettingsState"/>
+        <applicationConfigurable parentId="tools" instance="com.timeline.config.AppSettingsConfigurable"
+                                 id="org.intellij.sdk.settings.AppSettingsConfigurable"
+                                 displayName="SDK: Application Settings Example"/>
+    </extensions>
+
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="T.A" class="com.timeline.component.Dialog" text="提示功能" description="typingCat">
+            <add-to-group group-id="EditMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl 5"/>
+        </action>
+    </actions>
+</idea-plugin>
