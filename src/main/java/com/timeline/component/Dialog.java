@@ -31,6 +31,7 @@ public class Dialog extends AnAction {
         PsiElement element = e.getData(CommonDataKeys.PSI_ELEMENT);
         Editor editor = e.getData(CommonDataKeys.EDITOR);
 
+
         JComponent component = editor.getComponent();
 //        JComponent contentComponent = editor.getContentComponent();
 //        JComponent headerComponent = editor.getHeaderComponent();
@@ -58,15 +59,15 @@ public class Dialog extends AnAction {
                 long nowTimeBetween = controlPanelDialog.computeNowTimeBetween();
                 float rate = 1 - (1F * nowTimeBetween / originTimeBetween);
                 int y = (int) (component.getHeight() * rate);
-                gp2d.fillRect(0, y, 10, 1000);
+                gp2d.fillRect(0, 0, 10, 1000);
                 System.out.println("rate:" + rate + " y:" + y);
             }
         };
 
 
         jPanel.setPreferredSize(new Dimension(10, 800));
-        component.getParent().add(jPanel, BorderLayout.LINE_END);
-
+//        component.getParent().add(jPanel, BorderLayout.LINE_END);
+//        WindowManagerEx.getInstanceEx().getFrame(e.getProject()).getRootPane().getContentPane().add(jPanel,BorderLayout.LINE_END)
     }
 
 

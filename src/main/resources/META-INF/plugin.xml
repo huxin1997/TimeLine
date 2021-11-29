@@ -21,6 +21,12 @@
     </extensions>
 
 
+    <applicationListeners>
+        <listener class="com.timeline.listener.MyEditorListener"
+                  topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"/>
+    </applicationListeners>
+
+
     <actions>
         <!-- Add your actions here -->
         <action id="T.A" class="com.timeline.component.Dialog" text="提示功能" description="typingCat">
